@@ -1,0 +1,32 @@
+<head>
+        <title>First HTML</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            h1 {
+                color: red;
+                font-size: 50px;
+            }
+            p {
+                color: blue;
+                font-size: 30px;
+            }
+            #heading {
+                color: green;
+                font-size: 40px;
+            }
+            .test1 {
+                color: yellow;
+                font-size: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="heading" class="test1 test2">First HTML</h1>
+        <p id="para">My first HTML</p>
+        <a href="https://www.google.com" target="_blank" style="color:red; font-size:30px">
+            Google
+        </a>
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" title='tooltip text' width="200" alt="Google Logo">
+    </body>
+</html>

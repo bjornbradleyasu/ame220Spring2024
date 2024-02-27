@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JavaScript Simple Slide Show</title>
+    <title>jQuery Simple Slide Show</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -29,32 +30,14 @@
     var goToCurrentSlide = function(){
         if(animation == 'sliding'){
             var newMargin = currentSlide * 100;
-            // $("#container").stop().animate({marginLeft: '-' + newMargin + 'vw'}, 500);
+            $("#container").stop().animate({marginLeft: '-' + newMargin + 'vw'}, 500);
             // document.getElementById('container').style.marginLeft = '-' + newMargin + 'vw';
-            document.getElementById('container').style["margin-left"] = '-' + newMargin + 'vw';
-        }else{  // FADING
-            for(var i = 0; i < images.length; i++){
-                var slide = document.getElementsByClassName('slide')[i];
-                if(i == currentSlide){
-                    slide.style.opacity = 1;
-                }else{
-                    slide.style.opacity = 0;
-                }
-            }
+        }else if (animation == 'fading'){  // FADING
+            $('.slide').stop().fadeOut(2000);
+            $($('.slide')[currentSlide]).stop().fadeIn(4000);
         }
-        //$("#numContainer a").css("color", "");
-        //$($("#numContainer a")[currentSlide]).css("color", "gold");
-
-
-        var aElements = document.getElementById('numContainer').getElementsByTagName('a');
-        for(var i = 0; i < aElements.length; i++){
-            if(i == currentSlide){
-                aElements[i].style.color = 'gold';
-            }   
-            else{
-              aElements[i].style.color = '';
-            }
-        }
+        $("#numContainer a").css("color", "");
+        $($("#numContainer a")[currentSlide]).css("color", "gold");
 
     }
     var goNext = function(){
@@ -68,13 +51,11 @@
     }
 
     var main = function(){
-        //$("body").addClass(animation);
-        //document.querySelectorAll('body')[0].className += " " + animation;
-        document.getElementsByTagName('body')[0].className += " " + animation;
+        $("body").addClass(animation);
         var markup = '';
         var markup2 = '';
         for(var i = 0; i < images.length; i++){
-            markup += '<div class="slide" style="background-image:url(\'' + images[i] + '\')"></div>';  
+            markup += '<div class="slide" style="background-image:url(' + images[i] + '"></div>';  
             markup2 += '<a class="btn black" href="javascript:goTo(' + i + ')">' + (i+1) + '</a>';
         }
         document.getElementById('container').innerHTML = markup;
@@ -83,12 +64,11 @@
            document.getElementById('container').style.width = images.length * 100 + 'vw';
         }
         else{ // FADING
-
+            document.getElementById('container').style.width = images.length * 100 + 'vw';
         }
+        $('.fade').hide();
+        $('.fade').first().show();
         goToCurrentSlide();
-        setTimeout(function(){
-            document.getElementById('container').style.transitionDuration = '0.5s';
-        }, 100);
     }
     </script>
 </head>
@@ -114,7 +94,7 @@
         overflow: hidden;
     }
     .slide{
-        display: block;
+        display: none;
         position: absolute;
         height: 100vh;
         width: 100vw;
@@ -127,6 +107,7 @@
         max-width: 100vw;
         position: relative;
     }
+
 </style>
 
 

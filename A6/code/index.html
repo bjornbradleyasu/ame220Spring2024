@@ -35,7 +35,7 @@
                     var tzName = $(`#timezone option[value="${timezones[i]}"]`).text();
                     //Including Name
                     markup += `<div class='clock-item' style='display: flex; align-items: center;margin-bottom: 5px; background-color: white; padding: 5px; border-radius: 5px;'>
-                    <div style='width: 150px; height: 120px; overflow: hidden; position: relative;'>
+                    <div style='width: 150px; height: 120px; overflow: hidden; position: relative; background-color: white;'>
                     <iframe src='clock.html#${tzOffset}' style="position: absolute; width: 350px; height: 340px; border: none; transform: scale(0.3); transform-origin: top left; left: 5px; top: 5px;"></iframe>
                     </div>
                     <span style='padding-left: 10px; flex-grow: 1; font-size: 11px; text-align: right; white-space: normal; word-wrap: break-word; max-width: calc(100% - 160px);'>${tzName}</span>
